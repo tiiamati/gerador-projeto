@@ -35,11 +35,18 @@ public abstract class ServiceContract {
     public Resource createProject(Project project) {
         this.projectDetails = project;
 
+        // cria o caminho do novo projeto
         File newProjectDirectory = createPathNameProject();
+
+        // busca o caminho de projeto base que usamos para nos espelhar na criação de um novo projeto
         File baseProject = new File(getBaseProject());
 
+        // verifica se o novo projeto foi criado
         if (newProjectDirectory.mkdirs()) {
+
+            // copia o diretorio do projeto base para o novo diretorio criado do novo projeto
             copyDirectory(baseProject, newProjectDirectory.toPath());
+
             try {
                 return new UrlResource(getZip(newProjectDirectory.toString()));
             } catch (MalformedURLException e) {

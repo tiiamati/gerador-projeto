@@ -25,7 +25,7 @@ public class JavaController {
     }
 
     @PostMapping
-    public ResponseEntity<Resource> createProject(
+    public ResponseEntity<Resource> add(
             @RequestParam("sigla") String sigla,
             @RequestParam("description") String description,
             @RequestParam("name") String name) {
@@ -38,7 +38,7 @@ public class JavaController {
 
         Resource resource = javaService.createProject(project);
 
-        javaService.deleteCloneProject();
+//        javaService.deleteCloneProject();
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);

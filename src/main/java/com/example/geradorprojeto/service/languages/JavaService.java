@@ -46,6 +46,10 @@ public class JavaService extends ServiceContract {
     public void copyDirectory(File baseProject, Path newProjectPath) {
         Function<PathFilesEdit, Boolean> function =
                 (pathFilesEdit) -> {
+
+                    // se o arquivo que estamos percorrendo for:
+
+                    // o diretorio principal do projeto:
                     if (pathFilesEdit.getBaseProjectFile().getName().equals(getBaseProjectName())) {
                         pathFilesEdit.setNewProjectPathCreate(
                                 createDirectoryProjectName(pathFilesEdit.getNewProjectPathCreate())
@@ -74,6 +78,7 @@ public class JavaService extends ServiceContract {
 
     private Path createDirectoryProjectName(Path newProjectPathCreate) {
         try {
+            // caso o nome principal do projeto contenha um hifen, deve criar a lista de diretorio, um dentro do outro
             if (projectDetails.getName().contains("-")) {
                 String[] directories = projectDetails.getName().split("-");
 
@@ -82,7 +87,7 @@ public class JavaService extends ServiceContract {
                     Files.createDirectory(newProjectPathCreate);
 
                     if (isLastDirectory(directories, directory)) {
-                        newProjectPathCreate = Paths.get(newProjectPathCreate.toString().concat("\\" + directory));
+                        newProjectPathCreate = Paths.get(newProjectPathCreate.toString().concat("/" + directory));
                     }
                 }
 
