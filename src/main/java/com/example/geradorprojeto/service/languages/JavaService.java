@@ -54,11 +54,13 @@ public class JavaService extends ServiceContract {
                         pathFilesEdit.setNewProjectPathCreate(
                                 createDirectoryProjectName(pathFilesEdit.getNewProjectPathCreate())
                         );
+                        // o diretorio da sigla do projeto:
                     } else if (pathFilesEdit.getBaseProjectFile().getName().equals(SIGLA)) {
                         pathFilesEdit.setNewProjectPathCreate(
                                 createSiglaDirectory(pathFilesEdit.getNewProjectPathCreate())
                         );
                     } else {
+                        // todos os outros arquivos e pastas:
                         createFile(
                                 pathFilesEdit.getBaseProjectPath(),
                                 pathFilesEdit.getNewProjectPathCreate().toString()
