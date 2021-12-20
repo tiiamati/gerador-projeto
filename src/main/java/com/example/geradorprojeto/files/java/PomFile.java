@@ -1,6 +1,6 @@
 package com.example.geradorprojeto.files.java;
 
-import com.example.geradorprojeto.dto.ProjectDTO;
+import com.example.geradorprojeto.domain.Project;
 import com.example.geradorprojeto.utils.FileConvertUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
@@ -18,7 +18,7 @@ public class PomFile {
     private static final String POM_ARTIFACT_ID = "artifactId";
     private static final String POM_DESCRIPTION = "description";
 
-    public void changingContent(Path newProjectPath, ProjectDTO project) {
+    public void changingContent(Path newProjectPath, Project project) {
         Document document = Jsoup.parse(readFileToString(newProjectPath), "", Parser.xmlParser());
         document.outputSettings().prettyPrint(false);
 
@@ -39,7 +39,7 @@ public class PomFile {
         return null;
     }
 
-    public void changingPomValue(Document document, ProjectDTO project) {
+    public void changingPomValue(Document document, Project project) {
 
         StringBuilder artifactId = new StringBuilder();
 

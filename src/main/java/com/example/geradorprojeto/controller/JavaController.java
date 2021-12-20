@@ -1,6 +1,6 @@
 package com.example.geradorprojeto.controller;
 
-import com.example.geradorprojeto.dto.ProjectDTO;
+import com.example.geradorprojeto.domain.Project;
 import com.example.geradorprojeto.service.languages.JavaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -30,7 +30,7 @@ public class JavaController {
             @RequestParam("description") String description,
             @RequestParam("name") String name) {
 
-        ProjectDTO project = new ProjectDTO();
+        Project project = new Project();
 
         project.setSigla(sigla);
         project.setDescription(description);
@@ -38,7 +38,7 @@ public class JavaController {
 
         Resource resource = javaService.createProject(project);
 
-//        javaService.deleteCloneProject();
+        javaService.deleteCloneProject();
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);

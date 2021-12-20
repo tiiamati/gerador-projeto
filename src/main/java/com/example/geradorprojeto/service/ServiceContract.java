@@ -1,7 +1,7 @@
 package com.example.geradorprojeto.service;
 
 import com.example.geradorprojeto.domain.PathFilesEdit;
-import com.example.geradorprojeto.dto.ProjectDTO;
+import com.example.geradorprojeto.domain.Project;
 import com.example.geradorprojeto.utils.DirectoryUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
@@ -22,7 +22,7 @@ import java.util.function.Function;
 @Slf4j
 public abstract class ServiceContract {
 
-    protected ProjectDTO projectDetails;
+    protected Project projectDetails;
 
     protected abstract File createPathNameProject();
 
@@ -32,7 +32,7 @@ public abstract class ServiceContract {
 
     protected abstract String getCloneProject();
 
-    public Resource createProject(ProjectDTO project) {
+    public Resource createProject(Project project) {
         this.projectDetails = project;
 
         File newProjectDirectory = createPathNameProject();
