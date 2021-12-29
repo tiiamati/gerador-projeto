@@ -9,7 +9,6 @@
     <link rel="stylesheet" th:href="@{/styles/bootstrap.css}" title="compact" type="text/css">
 
     <title>Gerador de Código</title>
-    <script type="text/javascript" th:src="@{/js/index.js}"></script>
 
 </head>
 <body>
@@ -24,29 +23,26 @@
     <hr class="bg-light mb-5 mt-5"/>
     <form id="form-id" method="POST">
         <div class="row">
-            <div class="col-6">
+            <div class="col-4">
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control text-light" name="name" id="name" value="demo">
-                    <small id="nameHelp" class="form-text text-muted">Exemplo: meu-projeto</small>
+                    <label for="name">NOME:</label>
+                    <input type="text" class="form-control" name="name" id="name" value="meu-projeto">
+                    <small id="nameHelp" class="form-text text-muted">arquivo-teste</small>
                 </div>
                 <div class="form-group">
-                    <label for="sigla">Sigla</label>
-                    <input type="text" class="form-control text-light" name="sigla" id="sigla" value="ev9">
-                    <small id="siglaHelp" class="form-text text-muted">Exemplo: ey5, ev9 ..</small>
+                    <label for="sigla">SIGLA: </label>
+                    <input type="text" class="form-control" name="sigla" id="sigla" value="veic">
+                    <small id="siglaHelp" class="form-text text-muted"></small>
                 </div>
-            </div>
-            <div class="col-6">
                 <div class="form-group">
-                    <label for="description">Description</label>
-                    <input type="text" class="form-control text-light" name="description" id="description"
-                           value="Projeto Demo">
+                    <label for="description">DESCRIÇÃO DO PROJETO: </label>
+                    <input type="string" class="form-control" name="description" id="description" value="Projeto demo deaguma coisa">
                 </div>
             </div>
         </div>
         <div class="row justify-content-md-center mt-5">
             <div class="col-3">
-                <button type="submit" class="btn btn-outline-light btn-block">Gerar Código</button>
+                <button type="submit" class="btn btn-outline-dark">Gerar Projeto</button>
             </div>
         </div>
     </form>

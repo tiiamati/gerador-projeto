@@ -4,6 +4,8 @@ import com.example.geradorprojeto.utils.StringFormatUtils;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class Project {
@@ -13,8 +15,6 @@ public class Project {
     private String description;
     private String sigla;
     private String nameCamelCase;
-
-    private void setNameCamelCase(String value) {
-        nameCamelCase = StringFormatUtils.getCamelCaseNameWithHypenJoined(value);
-    }
+    private String nameWithDot;
+    private List<PomDetails> pomDetails;
 }

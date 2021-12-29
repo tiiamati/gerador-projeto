@@ -19,6 +19,7 @@ public class DirectoryUtils {
 
             pathFilesEdit.setBaseProjectPath(baseProjectFile.toPath());
             pathFilesEdit.setBaseProjectFile(baseProjectFile);
+
             pathFilesEdit.setNewProjectPathCreate(
                     newProjectPath.resolve(pathFilesEdit.getBaseProjectPath().getFileName())
             );

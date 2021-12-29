@@ -1,10 +1,7 @@
 package com.example.geradorprojeto.files;
 
 import com.example.geradorprojeto.domain.Project;
-import com.example.geradorprojeto.files.java.AppFile;
-import com.example.geradorprojeto.files.java.ApplicationPropertiesFile;
-import com.example.geradorprojeto.files.java.PomFile;
-import com.example.geradorprojeto.files.java.ReadmeFile;
+import com.example.geradorprojeto.files.java.*;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -14,7 +11,8 @@ public class JavaFile implements FilesInterface {
     private static final String POM = "pom.xml";
     private static final String README = "README.md";
     private static final String APP_FILE = "ProjectCloneApplication.java";
-    private static final String APPLICATION_PROPERTIES = "application.properties";
+    private static final String APP_TESTE_FILE = "ProjectCloneApplicationTests.java";
+    private static final String APPLICATION = "application.yml";
 
     @Override
     public void changingContent(File baseProjectFile, Path newProjectPath, Project project) {
@@ -34,7 +32,12 @@ public class JavaFile implements FilesInterface {
             return;
         }
 
-        if (baseProjectFile.getName().equals(APPLICATION_PROPERTIES)) {
+        if (baseProjectFile.getName().equals(APP_TESTE_FILE)) {
+            new AppTesteFile().changingContent(newProjectPath, project);
+            return;
+        }
+
+        if (baseProjectFile.getName().equals(APPLICATION)) {
             new ApplicationPropertiesFile().changingContent(newProjectPath, project);
             return;
         }

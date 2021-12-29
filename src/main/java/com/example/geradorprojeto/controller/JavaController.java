@@ -1,7 +1,9 @@
 package com.example.geradorprojeto.controller;
 
+import com.example.geradorprojeto.domain.PomDetails;
 import com.example.geradorprojeto.domain.Project;
 import com.example.geradorprojeto.service.languages.JavaService;
+import com.example.geradorprojeto.utils.StringFormatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Collections;
 
 @Controller
 @RequestMapping("/java")
@@ -35,10 +39,20 @@ public class JavaController {
         project.setSigla(sigla);
         project.setDescription(description);
         project.setName(name);
+        project.setNameCamelCase(StringFormatUtils.getCamelCaseNameWithHypenJoined(name));
+        project.setNameWithDot(name.replace("-", "."));
+
+        PomDetails pomDetails = new PomDetails();
+        pomDetails.setGroupId("org.projectlombok");
+        pomDetails.setArtifactId("lombok");
+        pomDetails.setVersion("1.18.20");
+        pomDetails.setScope("provided");
+
+        project.setPomDetails(Collections.singletonList(pomDetails));
 
         Resource resource = javaService.createProject(project);
 
-        javaService.deleteCloneProject();
+//        javaService.deleteCloneProject();
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);

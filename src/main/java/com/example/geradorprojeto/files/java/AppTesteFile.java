@@ -3,13 +3,12 @@ package com.example.geradorprojeto.files.java;
 import com.example.geradorprojeto.domain.Project;
 import com.example.geradorprojeto.utils.FileConvertUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.jni.File;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 
 @Slf4j
-public class AppFile {
+public class AppTesteFile {
 
     public void changingContent(Path newProjectPath, Project project) {
 
@@ -18,7 +17,7 @@ public class AppFile {
                 .append("com.")
                 .append(project.getNameWithDot());
 
-        String fileName = project.getNameCamelCase().concat("Application");
+        String fileName = project.getNameCamelCase().concat("ApplicationTests");
 
         FileConvertUtils fileConvertUtils = new FileConvertUtils();
 
