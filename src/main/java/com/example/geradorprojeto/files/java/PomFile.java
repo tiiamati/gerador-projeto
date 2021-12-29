@@ -53,7 +53,7 @@ public class PomFile {
                 .append(project.getSigla());
 
         document.getElementsByTag(POM_NAME).get(0).appendText(project.getName());
-        document.getElementsByTag(POM_ARTIFACT_ID).get(1).appendText(project.getNameWithDot());
+        document.getElementsByTag(POM_ARTIFACT_ID).get(1).appendText(project.getName());
         document.getElementsByTag(POM_DESCRIPTION).get(0).appendText(project.getDescription());
         document.getElementsByTag(POM_GROUP_ID).get(1).appendText(sigla.toString());
 
