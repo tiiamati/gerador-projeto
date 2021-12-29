@@ -52,7 +52,7 @@ public class JavaController {
 
         Resource resource = javaService.createProject(project);
 
-//        javaService.deleteCloneProject();
+        javaService.deleteCloneProject();
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);
